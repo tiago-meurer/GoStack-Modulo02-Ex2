@@ -1,0 +1,48 @@
+<htmn>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Header Text</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div id="app">
+              <button type="button" class="btn btn-criar">Criar Caixa</button>
+            </div>
+          </div>
+
+        <script>
+            var btnElement = document.querySelector('button.btn');
+            let count = 1;
+
+            btnElement.onclick = function () {
+
+                // Criar boxElement
+                let boxElement = document.createElement("div");
+                boxElement.className = "box";
+                boxElement.id = "box-" + count;
+                boxElement.style.width = '100px';
+                boxElement.style.height = '100px';
+                boxElement.style.marginTop = '50px';
+                boxElement.style.backgroundColor = '#f00';
+
+                boxElement.addEventListener("mouseover", () => {
+                    let newColor = getRandomColor();
+
+                    console.log(boxElement.id + ": " + newColor);
+                    boxElement.style.backgroundColor = newColor;
+                });
+
+                // Adicionar novo boxElement para app
+                document.getElementById('app').appendChild(boxElement);
+                count++;
+            }
+
+            function getRandomColor() {
+                var color = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+                return color;
+            }
+        </script>
+    </body>
+</htmn>
